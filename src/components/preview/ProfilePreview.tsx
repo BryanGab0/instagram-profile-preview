@@ -1,7 +1,9 @@
 import type { Profile } from "@/types/profile";
 import { HighlightsRow } from "./HighlightsRow";
+import { PostGrid } from "./PostGrid";
 import { ProfileActions } from "./ProfileActions";
 import { ProfileHeader } from "./ProfileHeader";
+import { ProfileTabs } from "./ProfileTabs";
 import { ProfileTopBar } from "./ProfileTopBar";
 import { PREVIEW_STRINGS } from "./strings";
 import type { PreviewLocale } from "./types";
@@ -21,6 +23,10 @@ export function ProfilePreview({ profile, locale }: ProfilePreviewProps) {
       <ProfileHeader profile={profile} strings={strings} />
       <ProfileActions strings={strings} />
       <HighlightsRow highlights={profile.highlights} />
+      <ProfileTabs />
+      <div className="flex flex-1 flex-col">
+        <PostGrid posts={profile.posts} strings={strings} />
+      </div>
     </div>
   );
 }
