@@ -1,4 +1,6 @@
 import type { Profile } from "@/types/profile";
+import { HighlightsRow } from "./HighlightsRow";
+import { ProfileActions } from "./ProfileActions";
 import { ProfileHeader } from "./ProfileHeader";
 import { ProfileTopBar } from "./ProfileTopBar";
 import { PREVIEW_STRINGS } from "./strings";
@@ -17,6 +19,8 @@ export function ProfilePreview({ profile, locale }: ProfilePreviewProps) {
     <div className="flex min-h-full flex-col">
       <ProfileTopBar username={profile.username} isVerified={profile.isVerified} />
       <ProfileHeader profile={profile} strings={strings} />
+      <ProfileActions strings={strings} />
+      <HighlightsRow highlights={profile.highlights} />
     </div>
   );
 }
