@@ -1,4 +1,5 @@
 import { EditPanel } from "@/components/editor/EditPanel";
+import { ResetButton } from "@/components/editor/ResetButton";
 import { FitToScreen } from "@/components/layout/FitToScreen";
 import { Header } from "@/components/layout/Header";
 import { PreviewControls } from "@/components/layout/PreviewControls";
@@ -6,32 +7,60 @@ import { PHONE_HEIGHT, PHONE_WIDTH } from "@/components/preview/dimensions";
 import { PhoneFrame } from "@/components/preview/PhoneFrame";
 import { ProfilePreview } from "@/components/preview/ProfilePreview";
 import type { PreviewLocale, PreviewTheme } from "@/components/preview/types";
-import { useProfile } from "@/hooks/useProfile";
-import { useState } from "react";
+import { DEFAULT_PROFILE } from "@/constants/defaultProfile";
+import { useLocalStorageState } from "@/hooks/useLocalStorageState";
+import { usePersistentProfile } from "@/hooks/usePersistentProfile";
+import { cn } from "@/lib/utils";
 
 // Header (64px), page padding (2 × 32px) and the preview controls above the phone (48px).
 const RESERVED_HEIGHT = 176;
 
 export function Home() {
-  const { profile, actions } = useProfile();
-  const [previewTheme, setPreviewTheme] = useState<PreviewTheme>("light");
-  const [previewLocale, setPreviewLocale] = useState<PreviewLocale>("pt-BR");
+  const { profile, actions, isLoaded, saveFailed } = usePersistentProfile();
+  const [previewTheme, setPreviewTheme] = useLocalStorageState<PreviewTheme>(
+    "instapreview:preview-theme",
+    "light",
+    ["light", "dark"],
+  );
+  const [previewLocale, setPreviewLocale] = useLocalStorageState<PreviewLocale>(
+    "instapreview:preview-locale",
+    "pt-BR",
+    ["pt-BR", "en"],
+  );
 
   return (
     <div className="min-h-screen">
       <Header />
 
-      <main className="mx-auto grid max-w-6xl gap-8 px-4 py-8 sm:px-6 lg:grid-cols-[minmax(0,1fr)_auto] lg:items-start">
+      {/* Hidden until the saved profile loads, so the default one doesn't flash first. */}
+      <main
+        className={cn(
+          "mx-auto grid max-w-6xl gap-8 px-4 py-8 sm:px-6 lg:grid-cols-[minmax(0,1fr)_auto] lg:items-start",
+          !isLoaded && "invisible",
+        )}
+      >
         <section
           aria-labelledby="editor-title"
           className="order-2 rounded-2xl border bg-card p-6 shadow-sm lg:order-1"
         >
-          <h2 id="editor-title" className="text-xl font-bold">
-            Editar perfil
-          </h2>
+          <div className="flex items-center justify-between gap-4">
+            <h2 id="editor-title" className="text-xl font-bold">
+              Editar perfil
+            </h2>
+            <ResetButton onReset={() => actions.replace(DEFAULT_PROFILE)} />
+          </div>
           <p className="mt-1 text-sm text-muted-foreground">
-            As mudanças aparecem no celular enquanto você edita.
+            As mudanças aparecem no celular enquanto você edita e ficam salvas neste navegador.
           </p>
+          {saveFailed && (
+            <p
+              role="alert"
+              className="mt-3 rounded-lg bg-destructive/10 px-3 py-2 text-sm text-destructive"
+            >
+              Não foi possível salvar. O armazenamento do navegador pode estar cheio; remova algumas
+              imagens e tente de novo.
+            </p>
+          )}
           <EditPanel profile={profile} actions={actions} />
         </section>
 

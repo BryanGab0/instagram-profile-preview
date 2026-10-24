@@ -23,6 +23,7 @@ export function useProfile(initialProfile: Profile = DEFAULT_PROFILE) {
       updateHighlight: (id: string, changes: Partial<Omit<Highlight, "id">>) =>
         dispatch({ type: "updateHighlight", id, changes }),
       removeHighlight: (id: string) => dispatch({ type: "removeHighlight", id }),
+      replace: (profile: Profile) => dispatch({ type: "replace", profile }),
     }),
     [],
   );
