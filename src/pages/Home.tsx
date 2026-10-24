@@ -1,5 +1,5 @@
-import { FitToScreen } from "@/components/layout/FitToScreen";
 import { EditPanel } from "@/components/editor/EditPanel";
+import { FitToScreen } from "@/components/layout/FitToScreen";
 import { Header } from "@/components/layout/Header";
 import { PHONE_HEIGHT, PHONE_WIDTH } from "@/components/preview/dimensions";
 import { PhoneFrame } from "@/components/preview/PhoneFrame";

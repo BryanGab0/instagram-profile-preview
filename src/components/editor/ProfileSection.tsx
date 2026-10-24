@@ -1,12 +1,12 @@
-import { Input } from "@/components/ui/Input";
-import { Camera, X } from "lucide-react";
 import { Button } from "@/components/ui/Button";
-import { ImagePicker } from "./ImagePicker";
+import { Input } from "@/components/ui/Input";
 import { Textarea } from "@/components/ui/Textarea";
 import type { ProfileActions } from "@/hooks/useProfile";
 import { sanitizeUsername } from "@/lib/username";
 import type { Profile } from "@/types/profile";
+import { Camera, X } from "lucide-react";
 import { Field } from "./Field";
+import { ImagePicker } from "./ImagePicker";
 import { Section } from "./Section";
 import { ToggleField } from "./ToggleField";
 

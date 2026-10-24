@@ -1,5 +1,5 @@
-import { Link } from "lucide-react";
 import type { Profile } from "@/types/profile";
+import { Link } from "lucide-react";
 import { Avatar } from "./Avatar";
 import { splitBio } from "./bio";
 import type { PreviewStrings } from "./strings";

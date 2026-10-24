@@ -1,8 +1,8 @@
-import { ImageIcon, Plus, X } from "lucide-react";
 import { Button } from "@/components/ui/Button";
 import { Input } from "@/components/ui/Input";
 import type { ProfileActions } from "@/hooks/useProfile";
 import type { Highlight } from "@/types/profile";
+import { ImageIcon, Plus, X } from "lucide-react";
 import { ImagePicker } from "./ImagePicker";
 import { Section } from "./Section";
 

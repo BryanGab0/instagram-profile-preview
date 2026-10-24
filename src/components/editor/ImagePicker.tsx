@@ -1,5 +1,5 @@
-import { useState, type ChangeEvent, type ReactNode } from "react";
 import { isImageFile, loadImageFile } from "@/lib/image";
+import { useState, type ChangeEvent, type ReactNode } from "react";
 
 // Listing formats (instead of image/*) makes iPhones convert HEIC photos to JPEG on upload,
 // since browsers can't display HEIC.

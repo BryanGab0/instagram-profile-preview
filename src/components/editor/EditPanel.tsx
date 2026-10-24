@@ -1,9 +1,9 @@
 import type { ProfileActions } from "@/hooks/useProfile";
 import type { Profile } from "@/types/profile";
-import { ProfileSection } from "./ProfileSection";
-import { StatsSection } from "./StatsSection";
 import { HighlightsSection } from "./HighlightsSection";
 import { PostsSection } from "./PostsSection";
+import { ProfileSection } from "./ProfileSection";
+import { StatsSection } from "./StatsSection";
 
 interface EditPanelProps {
   profile: Profile;
