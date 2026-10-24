@@ -1,4 +1,5 @@
 import { FitToScreen } from "@/components/layout/FitToScreen";
+import { EditPanel } from "@/components/editor/EditPanel";
 import { Header } from "@/components/layout/Header";
 import { PHONE_HEIGHT, PHONE_WIDTH } from "@/components/preview/dimensions";
 import { PhoneFrame } from "@/components/preview/PhoneFrame";
@@ -9,7 +10,7 @@ import { useProfile } from "@/hooks/useProfile";
 const RESERVED_HEIGHT = 128;
 
 export function Home() {
-  const { profile } = useProfile();
+  const { profile, actions } = useProfile();
 
   return (
     <div className="min-h-screen">
@@ -26,6 +27,7 @@ export function Home() {
           <p className="mt-1 text-sm text-muted-foreground">
             As mudanças aparecem no celular enquanto você edita.
           </p>
+          <EditPanel profile={profile} actions={actions} />
         </section>
 
         <aside
