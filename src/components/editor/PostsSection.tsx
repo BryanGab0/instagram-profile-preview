@@ -1,9 +1,9 @@
-import { useState, type DragEvent } from "react";
-import { ChevronLeft, ChevronRight, Plus, Trash2 } from "lucide-react";
 import { Button } from "@/components/ui/Button";
 import type { ProfileActions } from "@/hooks/useProfile";
 import { cn } from "@/lib/utils";
 import type { Post } from "@/types/profile";
+import { ChevronLeft, ChevronRight, Plus, Trash2 } from "lucide-react";
+import { useState, type DragEvent } from "react";
 import { ImagePicker } from "./ImagePicker";
 import { Section } from "./Section";
 

@@ -1,5 +1,5 @@
-import { Camera } from "lucide-react";
 import type { Post } from "@/types/profile";
+import { Camera } from "lucide-react";
 import type { PreviewStrings } from "./strings";
 
 interface PostGridProps {

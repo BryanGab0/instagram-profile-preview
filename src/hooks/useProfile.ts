@@ -1,8 +1,8 @@
-import { useMemo, useReducer } from "react";
 import { DEFAULT_PROFILE } from "@/constants/defaultProfile";
 import { createId } from "@/lib/id";
 import { profileReducer, type ProfileAction, type ProfileField } from "@/state/profileReducer";
 import type { Highlight, Profile } from "@/types/profile";
+import { useMemo, useReducer } from "react";
 
 export function useProfile(initialProfile: Profile = DEFAULT_PROFILE) {
   const [profile, dispatch] = useReducer(profileReducer, initialProfile);

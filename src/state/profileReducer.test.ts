@@ -1,6 +1,6 @@
-import { describe, expect, it } from "vitest";
 import { DEFAULT_PROFILE } from "@/constants/defaultProfile";
 import type { Profile } from "@/types/profile";
+import { describe, expect, it } from "vitest";
 import { profileReducer } from "./profileReducer";
 
 function withPosts(...ids: string[]): Profile {
