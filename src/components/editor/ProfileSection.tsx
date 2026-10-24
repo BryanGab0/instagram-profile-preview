@@ -1,4 +1,7 @@
 import { Input } from "@/components/ui/Input";
+import { Camera, X } from "lucide-react";
+import { Button } from "@/components/ui/Button";
+import { ImagePicker } from "./ImagePicker";
 import { Textarea } from "@/components/ui/Textarea";
 import type { ProfileActions } from "@/hooks/useProfile";
 import { sanitizeUsername } from "@/lib/username";
@@ -17,6 +20,37 @@ interface ProfileSectionProps {
 export function ProfileSection({ profile, setField }: ProfileSectionProps) {
   return (
     <Section title="Perfil">
+      <ImagePicker onPick={([image]) => setField("avatar", image)}>
+        {(open) => (
+          <div className="flex items-center gap-3">
+            <button
+              type="button"
+              onClick={open}
+              aria-label="Escolher foto de perfil"
+              className="flex size-16 shrink-0 items-center justify-center overflow-hidden rounded-full border bg-secondary transition-opacity outline-none hover:opacity-80 focus-visible:ring-2 focus-visible:ring-ring"
+            >
+              {profile.avatar ? (
+                <img src={profile.avatar} alt="" className="size-full object-cover" />
+              ) : (
+                <Camera className="size-6 text-muted-foreground" />
+              )}
+            </button>
+            <Button variant="outline" size="sm" onClick={open}>
+              {profile.avatar ? "Trocar foto" : "Escolher foto"}
+            </Button>
+            {profile.avatar && (
+              <Button
+                variant="ghost"
+                size="icon-sm"
+                onClick={() => setField("avatar", null)}
+                aria-label="Remover foto de perfil"
+              >
+                <X />
+              </Button>
+            )}
+          </div>
+        )}
+      </ImagePicker>
       <div className="grid gap-4 sm:grid-cols-2">
         <Field label="Nome de usuário">
           {(id) => (
