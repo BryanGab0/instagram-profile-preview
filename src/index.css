@@ -134,3 +134,7 @@
     -apple-system, BlinkMacSystemFont, "SF Pro Text", "Segoe UI", Roboto, "Helvetica Neue", Arial,
     sans-serif;
 }
+
+@utility ig-story-ring {
+  background-image: linear-gradient(to top right, #ffd600, #ff7a00, #ff0069, #d300c5);
+}
