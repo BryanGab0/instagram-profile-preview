@@ -1,4 +1,5 @@
 import { Logo } from "./Logo";
+import { ThemeToggle } from "./ThemeToggle";
 
 export function Header() {
   return (
@@ -10,6 +11,9 @@ export function Header() {
         <div>
           <h1 className="leading-tight font-bold">InstaPreview</h1>
           <p className="text-xs text-muted-foreground">Veja o perfil antes de publicar</p>
+        </div>
+        <div className="ml-auto">
+          <ThemeToggle />
         </div>
       </div>
     </header>
