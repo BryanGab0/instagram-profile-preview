@@ -1,4 +1,5 @@
 import { EditPanel } from "@/components/editor/EditPanel";
+import { ResetButton } from "@/components/editor/ResetButton";
 import { FitToScreen } from "@/components/layout/FitToScreen";
 import { Header } from "@/components/layout/Header";
 import { PreviewControls } from "@/components/layout/PreviewControls";
@@ -6,6 +7,7 @@ import { PHONE_HEIGHT, PHONE_WIDTH } from "@/components/preview/dimensions";
 import { PhoneFrame } from "@/components/preview/PhoneFrame";
 import { ProfilePreview } from "@/components/preview/ProfilePreview";
 import type { PreviewLocale, PreviewTheme } from "@/components/preview/types";
+import { DEFAULT_PROFILE } from "@/constants/defaultProfile";
 import { usePersistentProfile } from "@/hooks/usePersistentProfile";
 import { cn } from "@/lib/utils";
 import { useState } from "react";
@@ -33,9 +35,12 @@ export function Home() {
           aria-labelledby="editor-title"
           className="order-2 rounded-2xl border bg-card p-6 shadow-sm lg:order-1"
         >
-          <h2 id="editor-title" className="text-xl font-bold">
-            Editar perfil
-          </h2>
+          <div className="flex items-center justify-between gap-4">
+            <h2 id="editor-title" className="text-xl font-bold">
+              Editar perfil
+            </h2>
+            <ResetButton onReset={() => actions.replace(DEFAULT_PROFILE)} />
+          </div>
           <p className="mt-1 text-sm text-muted-foreground">
             As mudanças aparecem no celular enquanto você edita e ficam salvas neste navegador.
           </p>
