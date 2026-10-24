@@ -8,17 +8,25 @@ import { PhoneFrame } from "@/components/preview/PhoneFrame";
 import { ProfilePreview } from "@/components/preview/ProfilePreview";
 import type { PreviewLocale, PreviewTheme } from "@/components/preview/types";
 import { DEFAULT_PROFILE } from "@/constants/defaultProfile";
+import { useLocalStorageState } from "@/hooks/useLocalStorageState";
 import { usePersistentProfile } from "@/hooks/usePersistentProfile";
 import { cn } from "@/lib/utils";
-import { useState } from "react";
 
 // Header (64px), page padding (2 × 32px) and the preview controls above the phone (48px).
 const RESERVED_HEIGHT = 176;
 
 export function Home() {
   const { profile, actions, isLoaded, saveFailed } = usePersistentProfile();
-  const [previewTheme, setPreviewTheme] = useState<PreviewTheme>("light");
-  const [previewLocale, setPreviewLocale] = useState<PreviewLocale>("pt-BR");
+  const [previewTheme, setPreviewTheme] = useLocalStorageState<PreviewTheme>(
+    "instapreview:preview-theme",
+    "light",
+    ["light", "dark"],
+  );
+  const [previewLocale, setPreviewLocale] = useLocalStorageState<PreviewLocale>(
+    "instapreview:preview-locale",
+    "pt-BR",
+    ["pt-BR", "en"],
+  );
 
   return (
     <div className="min-h-screen">
