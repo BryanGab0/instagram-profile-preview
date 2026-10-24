@@ -83,3 +83,54 @@
     @apply bg-background text-foreground antialiased;
   }
 }
+
+@utility scrollbar-none {
+  scrollbar-width: none;
+
+  &::-webkit-scrollbar {
+    display: none;
+  }
+}
+
+/* Instagram app palette, scoped to the preview so it ignores the site theme. */
+.ig-preview {
+  --ig-background: #ffffff;
+  --ig-text: #000000;
+  --ig-button: #eff2f5;
+  --ig-border: #dbdbdb;
+  --ig-mention: #3846c4;
+  --ig-highlight-ring: #dbdbdb;
+  --ig-nav-border: #e6e6e6;
+  --ig-nav-active: #efefef;
+}
+
+.ig-preview[data-theme="dark"] {
+  --ig-background: #0c1014;
+  --ig-text: #f5f5f5;
+  --ig-button: #2b3036;
+  --ig-border: #262a2f;
+  --ig-mention: #a0b4f8;
+  --ig-highlight-ring: #363a40;
+  --ig-nav-border: #2a2f35;
+  --ig-nav-active: #3f4247;
+}
+
+@theme inline {
+  --color-ig-background: var(--ig-background);
+  --color-ig-text: var(--ig-text);
+  --color-ig-button: var(--ig-button);
+  --color-ig-border: var(--ig-border);
+  --color-ig-mention: var(--ig-mention);
+  --color-ig-highlight-ring: var(--ig-highlight-ring);
+  --color-ig-nav-border: var(--ig-nav-border);
+  --color-ig-nav-active: var(--ig-nav-active);
+}
+
+@theme {
+  --color-ig-blue: #4a5df9;
+  --color-ig-verified: #0095f6;
+  --color-ig-notification: #ff3040;
+  --font-ig:
+    -apple-system, BlinkMacSystemFont, "SF Pro Text", "Segoe UI", Roboto, "Helvetica Neue", Arial,
+    sans-serif;
+}
