@@ -83,3 +83,48 @@
     @apply bg-background text-foreground antialiased;
   }
 }
+
+@utility scrollbar-none {
+  scrollbar-width: none;
+
+  &::-webkit-scrollbar {
+    display: none;
+  }
+}
+
+/* Instagram app palette, scoped to the preview so it ignores the site theme. */
+.ig-preview {
+  --ig-background: #ffffff;
+  --ig-text: #000000;
+  --ig-button: #eff2f5;
+  --ig-mention: #3846c4;
+  --ig-highlight-ring: #dbdbdb;
+}
+
+.ig-preview[data-theme="dark"] {
+  --ig-background: #0c1014;
+  --ig-text: #f5f5f5;
+  --ig-button: #2b3036;
+  --ig-mention: #a0b4f8;
+  --ig-highlight-ring: #363a40;
+}
+
+@theme inline {
+  --color-ig-background: var(--ig-background);
+  --color-ig-text: var(--ig-text);
+  --color-ig-button: var(--ig-button);
+  --color-ig-mention: var(--ig-mention);
+  --color-ig-highlight-ring: var(--ig-highlight-ring);
+}
+
+@theme {
+  --color-ig-blue: #4a5df9;
+  --color-ig-verified: #0095f6;
+  --font-ig:
+    -apple-system, BlinkMacSystemFont, "SF Pro Text", "Segoe UI", Roboto, "Helvetica Neue", Arial,
+    sans-serif;
+}
+
+@utility ig-story-ring {
+  background-image: linear-gradient(to top right, #ffd600, #ff7a00, #ff0069, #d300c5);
+}

@@ -7,6 +7,7 @@ export const DEFAULT_PROFILE: Profile = {
   website: "linktr.ee/seuperfil",
   avatar: null,
   isVerified: false,
+  hasStory: true,
   postsCount: "42",
   followersCount: "1.2K",
   followingCount: "380",
